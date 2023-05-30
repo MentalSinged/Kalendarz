@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Switch } from 'react-native';
+import { Calendar } from 'react-native-calendars';
 
-export default function App() {
+const MyCalendar = () => {
+  const [showCalendar, setShowCalendar] = useState(true);
+
+  const toggleCalendar = () => {
+    setShowCalendar(!showCalendar);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }}>
+      <Switch value={showCalendar} onValueChange={toggleCalendar} />
+      {showCalendar && <Calendar />}
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default MyCalendar;
